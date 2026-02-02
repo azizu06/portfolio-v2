@@ -37,6 +37,7 @@
     "webpack-dev-server": "^5.2.2"
   },
   "dependencies": {
-    "@mdi/font": "^7.4.47"
+    "@mdi/font": "^7.4.47",
+    "lucide": "^0.563.0"
   }
 }
