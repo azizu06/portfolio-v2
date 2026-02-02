@@ -1,7 +1,162 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@600;700&family=Rubik:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+html,
+body {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  scroll-behavior: smooth;
+}
+
+footer {
+  text-align: center;
+  padding-bottom: 25px;
+}
+
+.link,
+.link:visited {
+  color: black;
+  display: flex;
+}
+
+.link svg {
+  height: 28px;
+  width: 28px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  justify-content: space-between;
+  padding: 15px 40px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: lightskyblue;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  border: 3px solid black;
+  padding: 10px 20px;
+  border-radius: 12px;
+}
+
+.items {
+  font-size: 18px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border: none;
+  background-color: transparent;
+}
+
+.logo {
+  padding: 5px;
+  border: none;
+  background-color: transparent;
+  font-size: 22px;
+  font-weight: 900;
+  color: black;
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+img {
+  display: block;
+  height: 475px;
+  width: 375px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.panel {
+  height: 100vh;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero {
+  gap: 50px;
+  flex: 1;
+}
+
+.bioAll {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.bio {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.hi {
+  font-size: 22px;
+}
+
+.lo {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 18px;
+}
+
+.lo svg {
+  height: 18px;
+  width: 18px;
+}
+
+.name {
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.status {
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.myWork {
+  font-size: 20px;
+  font-weight: 500;
+  border: 2px solid black;
+  border-radius: 12px;
+  width: fit-content;
+  padding: 10px 15px;
+}
+
+.moto {
+  font-size: 18px;
 }
