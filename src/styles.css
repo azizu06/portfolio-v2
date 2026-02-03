@@ -181,7 +181,7 @@ svg {
   border: 2px solid black;
   display: flex;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   border-radius: 12px;
 }
 
@@ -297,4 +297,38 @@ svg {
 .preview svg {
   width: 25px;
   height: 25px;
+}
+
+.lang {
+  display: flex;
+  flex-direction: column;
+  gap: 150px;
+  /* justify-content: center; */
+  border: 1px solid black;
+  min-height: 100vh;
+  padding: 25px 0px;
+}
+
+.langs {
+  display: flex;
+  gap: 50px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.skillPics {
+  display: flex;
+  align-items: center;
+  gap: 75px;
+}
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 50px;
+}
+
+.skillPics img {
+  height: 50px;
+  width: 50px;
 }
