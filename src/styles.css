@@ -102,7 +102,6 @@ header {
 .panel {
   min-height: 100vh;
   border: 1px solid black;
-  padding: 100px 50px;
   scroll-margin-top: 80px;
 }
 
@@ -202,6 +201,10 @@ svg {
   gap: 20px;
 }
 
+.preview {
+  padding-top: 20px;
+}
+
 .pic {
   border: 1px solid black;
   background-image: url('assets/isue.png');
@@ -244,7 +247,7 @@ svg {
   gap: 15px;
 }
 
-.lang img {
+.langs img {
   height: 20px;
   width: 20px;
 }
@@ -269,7 +272,7 @@ svg {
 
 .creations {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 50px;
 }
 
@@ -289,4 +292,9 @@ svg {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.preview svg {
+  width: 25px;
+  height: 25px;
 }
