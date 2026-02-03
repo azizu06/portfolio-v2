@@ -56,6 +56,7 @@ if (magnetic) {
 
 const hamburger = document.querySelector('.hamburger');
 const mobileNav = document.querySelector('.mobile-nav');
+const mobileClose = document.querySelector('.mobile-close');
 
 if (hamburger && mobileNav) {
   hamburger.addEventListener('click', () => {
@@ -63,6 +64,14 @@ if (hamburger && mobileNav) {
     hamburger.setAttribute('aria-expanded', String(isOpen));
     mobileNav.setAttribute('aria-hidden', String(!isOpen));
   });
+
+  if (mobileClose) {
+    mobileClose.addEventListener('click', () => {
+      mobileNav.classList.remove('is-open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobileNav.setAttribute('aria-hidden', 'true');
+    });
+  }
 
   mobileNav.querySelectorAll('a').forEach((linkEl) => {
     linkEl.addEventListener('click', () => {
