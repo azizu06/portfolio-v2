@@ -12,6 +12,9 @@ module.exports = {
   devtool: 'eval-source-map',
   devServer: {
     watchFiles: ['./src/template.html'],
+    static: {
+      directory: path.resolve(__dirname, 'public'),
+    },
   },
   module: {
     rules: [
@@ -24,7 +27,7 @@ module.exports = {
         use: 'html-loader',
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif|pdf)$/i,
+        test: /\.(png|svg|jpg|jpeg|gif|ico|pdf)$/i,
         type: 'asset/resource',
       },
       {

@@ -727,7 +727,7 @@ a {
 .lang,
 .skillPics {
   border: 1px solid var(--border-soft);
-  box-shadow: var(--shadow-subtle);
+  /* box-shadow: var(--shadow-subtle); */
   background: var(--surface-strong);
 }
 
@@ -853,7 +853,7 @@ header.header--compact .nav {
 
 /* Stormy Morning + Smart Nav + Mobile Menu (Final) */
 body {
-  background: #bdddfc;
+  background: linear-gradient(135deg, #bdddfc 0%, #88bdf2 100%);
   color: #384959;
 }
 
@@ -873,13 +873,35 @@ a {
 .impact,
 .projectInfo,
 .jobInfo {
-  color: #6a89a7;
+  color: #ffffff;
 }
 
 .hero {
-  background: linear-gradient(135deg, #bdddfc 0%, #88bdf2 100%);
+  background: transparent;
   border-radius: 18px;
   padding: 40px 20px;
+}
+
+.hero .hi,
+.hero .status,
+.hero .moto,
+.hero .lo {
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(56, 73, 89, 0.35);
+  font-weight: 600;
+}
+
+.hero .status {
+  font-weight: 700;
+}
+
+.hero .moto {
+  font-weight: 500;
+}
+
+.hero .name {
+  color: #384959;
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.35);
 }
 
 .myWork {
@@ -895,6 +917,11 @@ a {
   box-shadow: 0 15px 35px rgba(56, 73, 89, 0.1);
 }
 
+.projectInfo {
+  background: #6a89a7;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
 .skills .langs,
 .skillbox {
   border: none;
@@ -903,10 +930,9 @@ a {
 
 header {
   display: flex;
-  /* margin: 16px auto 0; */
   align-items: center;
   justify-content: space-between;
-  padding: 12px 28px;
+  padding: 10px 20px;
   width: min(1200px, calc(100% - 40px));
   position: fixed;
   top: 20px;
@@ -914,17 +940,44 @@ header {
   border-radius: 999px;
   transform: translateX(-50%);
   z-index: 1000;
-  border: 1px solid rgba(106, 137, 167, 0.2);
-  background: rgba(189, 221, 252, 0.75);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 10px 30px rgba(56, 73, 89, 0.1);
+  border: 1px solid rgba(189, 221, 252, 0.2);
+  background: rgba(56, 73, 89, 0.92);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 18px 40px rgba(56, 73, 89, 0.25);
   transition:
     transform 0.3s ease,
     top 0.3s ease;
 }
 
+.site-header,
+.site-header .logo,
+.site-header .items,
+.site-header .items:visited,
+.site-header .items:hover,
+.site-header .items:active,
+.site-header .items:focus,
+.site-header .socials svg,
+.site-header .hamburger svg {
+  color: #ffffff;
+  stroke: #ffffff;
+}
+
+.logo img {
+  height: 28px;
+  width: 28px;
+  background-color: transparent;
+  border-radius: 12px;
+}
+
+.hero {
+  color: #ffffff;
+}
+
+.hero .name {
+  color: #384959;
+}
 .site-header.is-hidden {
-  transform: translate(-50%, -120%);
+  transform: translate(-50%, -150%);
 }
 
 .items:hover {
@@ -1040,12 +1093,11 @@ header {
 .project-overlay .lo,
 .project-overlay .app,
 .project-overlay svg {
-  color: #bdddfc;
   stroke: #bdddfc;
 }
 
 .preview svg {
-  stroke: #384959;
+  stroke: white;
 }
 
 .preview a:hover svg {
@@ -1080,6 +1132,11 @@ header {
   .project,
   .skills {
     padding: 0px 20px;
+  }
+
+  .socials svg {
+    height: 20px;
+    width: 20px;
   }
   .prPics {
     height: 200px;
