@@ -15,6 +15,19 @@ html,
 body {
   height: 100%;
   scroll-behavior: smooth;
+  font-size: clamp(1rem, 1.1vw, 1.125rem);
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
 }
 
 body {
@@ -38,16 +51,16 @@ footer {
   display: flex;
 }
 
-.link svg {
-  height: 28px;
-  width: 28px;
+.preview svg {
+  max-width: 22px;
+  max-height: 22px;
 }
 
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 40px;
+  padding: 15px;
   width: 100%;
   position: fixed;
   top: 0;
@@ -56,11 +69,40 @@ header {
   background-color: lightskyblue;
 }
 
+.hi,
+.logo {
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+}
+
+.name {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+}
+
+.status {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+.moto,
+.myWork,
+.end {
+  font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+}
+
+.nav,
+.lo {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+}
+
+.app,
+.role {
+  font-size: clamp(1.15rem, 2.05vw, 1.55rem);
+}
+
 .nav {
   display: flex;
   align-items: center;
-  gap: 50px;
-  border: 3px solid black;
+  gap: 30px;
+  border: 2px solid black;
   padding: 10px 20px;
   border-radius: 12px;
   position: absolute;
@@ -69,7 +111,6 @@ header {
 }
 
 .items {
-  font-size: 18px;
   font-weight: 500;
   padding: 4px 10px;
   border: none;
@@ -80,7 +121,6 @@ header {
   padding: 5px;
   border: none;
   background-color: transparent;
-  font-size: 22px;
   font-weight: 900;
   color: black;
 }
@@ -88,18 +128,22 @@ header {
 .socials {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 15px;
 }
 
 .hero img {
   display: block;
-  height: 475px;
-  width: 375px;
+  max-height: 475px;
+  max-width: 375px;
+  width: 100%;
+  height: 100%;
   border-radius: 12px;
   object-fit: cover;
 }
 
 .panel {
+  display: flex;
+  justify-content: center;
   min-height: 100vh;
   border: 1px solid black;
   scroll-margin-top: 80px;
@@ -124,35 +168,33 @@ header {
   gap: 17px;
 }
 
-.hi {
-  font-size: 22px;
-}
-
 .lo,
 .date {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 18px;
 }
 
-svg {
-  height: 18px;
-  width: 18px;
+.socials svg {
+  max-height: 22px;
+  max-width: 22px;
+}
+
+.lo svg,
+.place svg {
+  max-height: 18px;
+  max-width: 18px;
 }
 
 .name {
-  font-size: 30px;
   font-weight: 900;
 }
 
 .status {
-  font-size: 26px;
   font-weight: 500;
 }
 
 .myWork {
-  font-size: 20px;
   font-weight: 500;
   border: 2px solid black;
   border-radius: 12px;
@@ -160,14 +202,9 @@ svg {
   padding: 10px 15px;
 }
 
-.moto {
-  font-size: 18px;
-}
-
 .exp {
   display: flex;
   flex-direction: column;
-  padding: 0px 50px;
 }
 
 .secTitle {
@@ -195,10 +232,14 @@ svg {
 
 .jobInfo,
 .projectInfo {
-  padding: 30px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.projectInfo .techs {
+  flex: 1;
 }
 
 .preview {
@@ -262,13 +303,12 @@ svg {
 .projects {
   display: flex;
   flex-direction: column;
-  padding: 0px 50px;
 }
 
 .creations {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
 }
 
 .creation {
@@ -289,19 +329,12 @@ svg {
   display: block;
 }
 
-.preview svg {
-  width: 25px;
-  height: 25px;
-}
-
 .lang {
   display: flex;
   flex-direction: column;
   gap: 100px;
-  /* justify-content: center; */
   border: 1px solid black;
   min-height: 100vh;
-  padding: 25px 0px;
 }
 
 .langs {
@@ -309,7 +342,6 @@ svg {
   gap: 35px;
   flex-direction: column;
   align-items: center;
-  padding: 0px 75px;
 }
 
 .skillPics {
@@ -317,14 +349,19 @@ svg {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 75px;
+  gap: 50px;
   border: 1px solid black;
 }
 
 .skills {
   display: flex;
   flex-direction: column;
-  padding: 0px 50px;
+}
+
+.exp,
+.skills,
+.projects {
+  padding-inline: clamp(1rem, 5vw, 3rem);
 }
 
 .skillPics img {
@@ -345,5 +382,103 @@ footer p {
   display: flex;
   justify-content: center;
   padding-top: 15px;
-  font-size: 20px;
+}
+
+@media (max-width: 767px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .hero img {
+    max-height: 400px;
+    max-width: 300px;
+  }
+
+  .bio .lo {
+    display: flex;
+    justify-content: center;
+  }
+  .bioAll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+  }
+  .bio {
+    display: flex;
+    gap: 15px;
+    text-align: center;
+  }
+  .nav {
+    display: none;
+  }
+
+  .creations {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .secTitle {
+    display: flex;
+    justify-content: center;
+    padding: 15px 0px 30px 0px;
+    border: 1px solid black;
+  }
+
+  .projectInfo {
+    gap: 1.25rem;
+  }
+
+  .impact {
+    line-height: 1.5;
+    max-width: 60ch;
+  }
+  .prPics {
+    height: 180px;
+  }
+  .tools {
+    padding: 4px 10px;
+    font-size: 1rem;
+    border-width: 1.5px;
+  }
+  .tech {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+  .bio .lo {
+    display: flex;
+    justify-content: center;
+  }
+  .bioAll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+  }
+  .bio {
+    display: flex;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .job {
+    width: 100%;
+  }
+
+  .exp,
+  .project,
+  .skills {
+    padding: 0px 20px;
+  }
 }
