@@ -238,8 +238,11 @@ header {
   gap: 20px;
 }
 
-.projectInfo .techs {
-  flex: 1;
+.projectInfo .impact {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* choose the number of lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .preview {
@@ -274,6 +277,10 @@ header {
 
 .impact {
   line-height: 27px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .tools {
@@ -292,6 +299,7 @@ header {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  margin-top: auto;
 }
 
 .loDate {
@@ -307,14 +315,17 @@ header {
 
 .creations {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 25px;
 }
 
 .creation {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   border-radius: 16px;
   border: 1px solid black;
+  max-width: 600px;
 }
 
 .prPics {
@@ -418,7 +429,11 @@ footer p {
 
   .creations {
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
+  }
+  .creation {
+    max-width: 100%;
   }
 
   .secTitle {
@@ -472,13 +487,33 @@ footer p {
     text-align: center;
   }
 
-  .job {
-    width: 100%;
-  }
-
   .exp,
   .project,
   .skills {
     padding: 0px 20px;
+  }
+
+  .prPics {
+    height: 200px;
+  }
+
+  .creations {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 400px) {
+  .projects {
+    padding-inline: 8px;
+  }
+  .creations {
+    justify-items: center;
+  }
+  .creation {
+    width: 100%;
+    max-width: none;
+  }
+  .prPics {
+    height: 180px;
   }
 }
