@@ -247,11 +247,6 @@ svg {
   gap: 15px;
 }
 
-.langs img {
-  height: 20px;
-  width: 20px;
-}
-
 .techs {
   display: flex;
   flex-direction: column;
@@ -302,7 +297,7 @@ svg {
 .lang {
   display: flex;
   flex-direction: column;
-  gap: 150px;
+  gap: 100px;
   /* justify-content: center; */
   border: 1px solid black;
   min-height: 100vh;
@@ -311,15 +306,19 @@ svg {
 
 .langs {
   display: flex;
-  gap: 50px;
+  gap: 35px;
   flex-direction: column;
   align-items: center;
+  padding: 0px 75px;
 }
 
 .skillPics {
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 75px;
+  border: 1px solid black;
 }
 
 .skills {
@@ -329,6 +328,22 @@ svg {
 }
 
 .skillPics img {
-  height: 50px;
-  width: 50px;
+  height: 75px;
+  width: 75px;
+  border-radius: 12px;
+}
+
+.skillbox {
+  display: flex;
+  align-items: center;
+  border: 3px solid black;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+footer p {
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+  font-size: 20px;
 }
