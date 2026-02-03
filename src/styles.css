@@ -46,9 +46,8 @@ footer {
 header {
   display: flex;
   align-items: center;
-  gap: 24px;
   justify-content: space-between;
-  padding: 15px 40px;
+  padding: 20px 40px;
   width: 100%;
   position: fixed;
   top: 0;
@@ -64,6 +63,9 @@ header {
   border: 3px solid black;
   padding: 10px 20px;
   border-radius: 12px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .items {
@@ -89,7 +91,7 @@ header {
   gap: 30px;
 }
 
-img {
+.hero img {
   display: block;
   height: 475px;
   width: 375px;
@@ -98,16 +100,17 @@ img {
 }
 
 .panel {
-  height: 100vh;
+  min-height: 100vh;
   border: 1px solid black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 100px 50px;
+  scroll-margin-top: 80px;
 }
 
 .hero {
+  display: flex;
   gap: 50px;
-  flex: 1;
+  align-items: center;
+  justify-content: center;
 }
 
 .bioAll {
@@ -126,14 +129,15 @@ img {
   font-size: 22px;
 }
 
-.lo {
+.lo,
+.date {
   display: flex;
   align-items: center;
   gap: 7px;
   font-size: 18px;
 }
 
-.lo svg {
+svg {
   height: 18px;
   width: 18px;
 }
@@ -159,4 +163,130 @@ img {
 
 .moto {
   font-size: 18px;
+}
+
+.exp {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 50px;
+}
+
+.secTitle {
+  display: flex;
+  justify-content: center;
+  padding: 15px 0px 50px 0px;
+  border: 1px solid black;
+}
+
+.jobs {
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  border-radius: 12px;
+}
+
+.job {
+  border-radius: 12px;
+  width: 500px;
+  border: 1px solid black;
+  border-radius: 12px;
+  height: fit-content;
+}
+
+.jobInfo,
+.projectInfo {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pic {
+  border: 1px solid black;
+  background-image: url('assets/isue.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 300px;
+  position: relative;
+}
+
+.job-overlay,
+.project-overlay {
+  position: absolute;
+  bottom: 15px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 10px;
+}
+
+.place {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.impact {
+  line-height: 27px;
+}
+
+.tools {
+  border: 2px solid black;
+  border-radius: 12px;
+  padding: 5px 15px;
+}
+
+.tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.lang img {
+  height: 20px;
+  width: 20px;
+}
+
+.techs {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.loDate {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 50px;
+}
+
+.creations {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 50px;
+}
+
+.creation {
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid black;
+}
+
+.prPics {
+  position: relative;
+  height: 250px;
+}
+
+.prPics img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
