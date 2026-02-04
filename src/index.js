@@ -1,8 +1,12 @@
 import './styles.css';
 import resume from './assets/Resume2026.pdf';
 
-const link = document.querySelector('.resume');
-link.href = resume;
+const links = document.querySelectorAll('.resume');
+links.forEach((link) => {
+  if (link) link.href = resume;
+});
+
+document.body.classList.add('js-ready');
 
 const header = document.querySelector('.site-header');
 let lastScrollY = window.scrollY || 0;
@@ -18,6 +22,15 @@ const onScroll = () => {
   }
   lastScrollY = currentY;
 };
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && mobileNav?.classList.contains('is-open')) {
+    mobileNav.classList.remove('is-open');
+    hamburger?.setAttribute('aria-expanded', 'false');
+    mobileNav.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('no-scroll');
+  }
+});
 
 window.addEventListener('scroll', onScroll, { passive: true });
 
@@ -46,6 +59,7 @@ if (hamburger && mobileNav) {
     const isOpen = mobileNav.classList.toggle('is-open');
     hamburger.setAttribute('aria-expanded', String(isOpen));
     mobileNav.setAttribute('aria-hidden', String(!isOpen));
+    document.body.classList.toggle('no-scroll', isOpen);
   });
 
   if (mobileClose) {
