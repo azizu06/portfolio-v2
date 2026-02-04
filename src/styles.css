@@ -1391,47 +1391,176 @@ main {
   padding: 140px 0 90px;
 }
 
-.creation:hover {
-  filter: drop-shadow(0 0 18px rgba(136, 189, 242, 0.65))
-    drop-shadow(0 0 42px rgba(136, 189, 242, 0.35));
-}
-
-.creation {
-  position: relative;
-  isolation: isolate;
-  border-radius: 16px;
-  box-shadow:
-    0 14px 36px rgba(56, 73, 89, 0.22),
-    0 0 40px rgba(136, 189, 242, 0.45),
-    0 0 90px rgba(136, 189, 242, 0.28);
-}
-
 .prPics {
   overflow: hidden;
   border-radius: 16px 16px 0 0;
 }
 
-/* 3) Strong noticeable glow behind card on hover */
+.prPics img {
+  border-radius: 16px 16px 0 0;
+}
+
+/* =========================
+   PROJECT CARD GLOW (FINAL)
+   ========================= */
+
+.creation {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden; /* keeps rounded corners clean */
+  isolation: isolate; /* keeps pseudo element behind correctly */
+
+  /* NORMAL (no glow) */
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(56, 73, 89, 0.12);
+  box-shadow: 0 15px 35px rgba(56, 73, 89, 0.12);
+
+  transition:
+    transform 250ms ease,
+    box-shadow 250ms ease,
+    border-color 250ms ease;
+}
+
+/* Background glow layer (OFF by default) */
 .creation::before {
   content: '';
   position: absolute;
-  inset: -22px; /* bigger = more glow */
-  border-radius: 24px;
-  z-index: -1;
-  opacity: 0.55;
-  filter: blur(28px);
-  transition: opacity 220ms ease;
 
+  /* make the glow extend outside the card */
+  inset: -28px;
+
+  border-radius: 24px;
+
+  /* IMPORTANT: keep it behind but still visible */
+  z-index: -1;
+
+  opacity: 0;
+  filter: blur(42px);
+  transition: opacity 250ms ease;
+
+  /* Electric sky glow */
   background: radial-gradient(
     circle at 30% 15%,
-    rgba(136, 189, 242, 0.95),
-    rgba(106, 137, 167, 0.55) 35%,
+    rgba(79, 195, 247, 0.95),
+    /* bright cyan */ rgba(33, 150, 243, 0.6) 35%,
     transparent 70%
   );
 }
 
+.creation:hover {
+  transform: translateY(-6px);
+  border-color: rgba(79, 195, 247, 0.95); /* brighter border */
+
+  box-shadow:
+    0 0 0 2.5px rgba(79, 195, 247, 0.95),
+    /* crisp glowing ring */ 0 0 22px rgba(79, 195, 247, 0.75),
+    /* soft glow around border */ 0 22px 55px rgba(0, 0, 0, 0.18),
+    /* lift shadow */ 0 0 90px rgba(79, 195, 247, 0.45); /* outer bloom */
+}
+
 .creation:hover::before {
   opacity: 1;
+}
+
+/* =========================
+   EXPERIENCE CARD (match Projects)
+   ========================= */
+
+/* Center the whole experience section nicely */
+.jobs {
+  display: flex;
+  justify-content: center;
+  padding: 0 24px 40px;
+}
+
+/* Make the experience card NOT super wide */
+.job {
+  width: min(560px, 100%);
+  border-radius: 18px;
+  overflow: hidden; /* we WANT clipping for clean rounded corners */
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 15px 35px rgba(56, 73, 89, 0.12);
+  transition:
+    transform 250ms ease,
+    box-shadow 250ms ease;
+}
+
+/* Hover similar to projects (lift) */
+.job:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.18);
+}
+
+/* Top image area like project cards */
+.job .pic {
+  min-height: 350px; /* taller hero area */
+  background-size: cover; /* make it feel like a "banner" */
+  background-position: center;
+  position: relative;
+}
+
+/* Overlay text inside the banner */
+.job-overlay {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding: 10px 12px;
+  border-radius: 14px;
+
+  background: rgba(56, 73, 89, 0.62);
+  backdrop-filter: blur(10px);
+}
+
+/* Make overlay text readable */
+.job-overlay .role,
+.job-overlay .app,
+.job-overlay .place,
+.job-overlay .lo,
+.job-overlay svg {
+  color: #ffffff;
+  stroke: #ffffff;
+}
+
+/* The content area (like .projectInfo) */
+.jobInfo {
+  background: #6a89a7; /* same vibe as projectInfo */
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Long description: make it readable */
+.jobInfo .impact {
+  line-height: 2;
+  color: rgba(255, 255, 255, 0.92);
+  overflow: visible; /* don't clip */
+}
+
+/* Meta rows (date/location) */
+.jobInfo .date,
+.jobInfo .place {
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 600;
+}
+
+/* Tech pills same as projects */
+.jobInfo .tools {
+  color: rgba(255, 255, 255, 0.92);
+  background: rgba(17, 24, 39, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-weight: 600;
+}
+
+/* If your tech list needs breathing room */
+.jobInfo .tech {
+  gap: 10px;
 }
 
 @keyframes footer-flow {
