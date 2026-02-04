@@ -2324,4 +2324,7 @@ main {
   .skills {
     padding: 0px;
   }
+  .skillPics {
+    gap: 10px;
+  }
 }
