@@ -2011,6 +2011,60 @@ main {
   padding-right: clamp(20px, 5vw, 80px);
 }
 
+/* NAV ICON INTERACTION */
+.site-header .socials .link,
+.site-header .nav .items {
+  position: relative;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    color 220ms ease,
+    opacity 220ms ease;
+}
+
+/* Icons (GitHub, LinkedIn, Resume) */
+.site-header .socials .link svg {
+  transition:
+    transform 220ms ease,
+    filter 220ms ease,
+    stroke 220ms ease;
+}
+
+/* Hover effect */
+.site-header .socials .link:hover,
+.site-header .nav .items:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* Glow on icons */
+.site-header .socials .link:hover svg {
+  filter: drop-shadow(0 0 10px rgba(120, 170, 255, 0.6));
+  stroke: #ffffff;
+}
+
+/* Nav text underline animation */
+.site-header .nav .items::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #7aa2ff, #9fd3ff);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: width 220ms ease;
+}
+
+.site-header .nav .items:hover::after {
+  width: 60%;
+}
+
+/* Optional: slight opacity change for inactive state */
+.site-header .socials .link:not(:hover) svg {
+  opacity: 0.85;
+}
+
 /* alternative to fixed height */
 
 @keyframes footer-flow {
