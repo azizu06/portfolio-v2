@@ -25,27 +25,34 @@ const onScroll = () => {
 
 window.addEventListener('scroll', onScroll, { passive: true });
 
-const revealItems = document.querySelectorAll('.reveal');
-
-if ('IntersectionObserver' in window && revealItems.length) {
-  document.body.classList.add('js-ready');
+const reveals = document.querySelectorAll('.reveal');
+const supportsIO = 'IntersectionObserver' in window;
+// If IO isn't supported / buggy, just show everything
+if (!supportsIO) {
+  reveals.forEach((el) => el.classList.add('is-visible'));
+} else {
+  // Only now do we enable the "hide until revealed" behavior
+  document.documentElement.classList.add('js-ready');
 
   const observer = new IntersectionObserver(
-    (entries) => {
+    (entries, obs) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target);
       });
     },
-    { threshold: 0.15 },
+    { threshold: 0.1, rootMargin: '0px 0px -10% 0px' },
   );
 
-  revealItems.forEach((el) => observer.observe(el));
-} else {
-  // Fallback: just show everything
-  revealItems.forEach((el) => el.classList.add('is-visible'));
+  reveals.forEach((el) => observer.observe(el));
+
+  // Extra safety: if Projects is still hidden on mobile, force-show it
+  setTimeout(() => {
+    document
+      .querySelectorAll('#projects .reveal:not(.is-visible)')
+      .forEach((el) => el.classList.add('is-visible'));
+  }, 1500);
 }
 
 const hamburger = document.querySelector('.hamburger');
@@ -79,6 +86,12 @@ if (hamburger && mobileNav) {
     });
   });
 
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) {
+      closeMobileNav();
+    }
+  });
+
   document.addEventListener('click', (e) => {
     if (!mobileNav.classList.contains('is-open')) return;
     const target = e.target;
@@ -86,12 +99,6 @@ if (hamburger && mobileNav) {
     const clickedInsideMenu = mobileNav.contains(target);
     const clickedHamburger = hamburger.contains(target);
     if (!clickedInsideMenu && !clickedHamburger) {
-      closeMobileNav();
-    }
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) {
       closeMobileNav();
     }
   });
