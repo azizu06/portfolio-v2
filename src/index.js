@@ -37,23 +37,6 @@ if (revealItems.length) {
   revealItems.forEach((el) => observer.observe(el));
 }
 
-const magnetic = document.querySelector('.magnetic');
-if (magnetic) {
-  const strength = 12;
-  const reset = () => {
-    magnetic.style.transform = 'translate3d(0, 0, 0)';
-  };
-  magnetic.addEventListener('mousemove', (e) => {
-    const rect = magnetic.getBoundingClientRect();
-    const relX = e.clientX - rect.left - rect.width / 2;
-    const relY = e.clientY - rect.top - rect.height / 2;
-    const moveX = (relX / rect.width) * strength;
-    const moveY = (relY / rect.height) * strength;
-    magnetic.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
-  });
-  magnetic.addEventListener('mouseleave', reset);
-}
-
 const hamburger = document.querySelector('.hamburger');
 const mobileNav = document.querySelector('.mobile-nav');
 const mobileClose = document.querySelector('.mobile-close');
