@@ -832,6 +832,14 @@ a {
   gap: 40px;
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
@@ -2125,7 +2133,8 @@ main {
 }
 
 /* animate in */
-.reveal.is-visible .secTitle::after {
+.reveal.is-visible .secTitle::after,
+.secTitle.reveal.is-visible::after {
   width: 70%;
 }
 
@@ -2282,41 +2291,6 @@ main {
 
 .no-scroll {
   overflow: hidden;
-}
-
-/* ---- REVEAL SAFETY: visible by default ---- */
-.reveal {
-  opacity: 1;
-  transform: none;
-}
-
-/* Only hide/animate if JS explicitly enables it */
-.js-ready .reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition:
-    opacity 0.6s ease,
-    transform 0.6s ease;
-}
-
-.js-ready .reveal.is-visible {
-  opacity: 1;
-  transform: none;
-}
-
-/* FIX: allow card hover even when element also uses .reveal */
-.js-ready .creation.reveal:hover,
-.js-ready .job.reveal:hover {
-  transform: translateY(-6px);
-}
-
-/* Mobile fallback: never let Projects be hidden */
-@media (max-width: 480px) {
-  .js-ready #projects,
-  .js-ready #projects .reveal {
-    opacity: 1;
-    transform: none;
-  }
 }
 
 @keyframes hero-fade-up {
