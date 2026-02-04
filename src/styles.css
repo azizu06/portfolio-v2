@@ -881,7 +881,7 @@ a {
 .hero .lo {
   color: #ffffff;
   text-shadow: 0 2px 8px rgba(56, 73, 89, 0.35);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .hero .status {
@@ -889,7 +889,7 @@ a {
 }
 
 .hero .moto {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .hero .name {
