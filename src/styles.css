@@ -85,9 +85,13 @@ footer {
   font-size: clamp(1.1rem, 2.2vw, 1.6rem);
 }
 
-.nav,
+.nav {
+  font-size: clamp(1.2rem, 1.8vw, 1.4rem);
+}
+
+.impact,
 .lo {
-  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  font-size: clamp(1rem, 2vw, 1.5rem);
 }
 
 .role {
@@ -208,7 +212,7 @@ footer {
 .secTitle {
   display: flex;
   justify-content: center;
-  padding: 10px 0 24px;
+  padding: 10px 0 25px;
 }
 
 .jobs {
@@ -230,14 +234,14 @@ footer {
   padding: 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
 }
 
 .projectInfo {
   padding: 1.25rem 1.25rem 0rem 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
   flex: 1;
 }
 
@@ -317,7 +321,8 @@ footer {
 .creations {
   display: grid;
   grid-template-columns: repeat(3, minmax(300px, 1fr));
-  width: min(12000px, 100%);
+  justify-content: center;
+  width: min(100000px, 100%);
   margin: 0 auto;
   padding: 0 24px 40px;
 }
@@ -1010,7 +1015,7 @@ header {
   left: 0;
   right: 0;
   width: 100%;
-  height: 35vh;
+  height: 50vh;
   background: #384959;
   display: flex;
   flex-direction: column;
@@ -1248,7 +1253,7 @@ section {
 .jobInfo p {
   color: rgba(255, 255, 255, 0.92);
   line-height: 1.55;
-  font-weight: 450;
+  font-weight: 500;
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.28);
 }
 
@@ -1574,7 +1579,6 @@ main {
 .jobs {
   display: flex;
   justify-content: center;
-  padding: 0 24px 40px;
 }
 
 /* Make the experience card NOT super wide */
@@ -1674,7 +1678,7 @@ main {
 }
 
 .jobInfo {
-  gap: 25px;
+  gap: 30px;
 }
 
 /* === FINAL OVERRIDES: fix job rounding + stop image overflow === */
@@ -2265,6 +2269,44 @@ main {
   outline-offset: 4px;
 }
 
+.jobs,
+.lang {
+  padding-top: 25px;
+}
+
+.hero .status,
+.hero .moto {
+  filter: drop-shadow(0 12px 28px rgba(20, 40, 120, 0.25));
+}
+
+.hero .hi,
+.hero .name,
+.hero .status,
+.hero .moto {
+  animation: hero-fade-up 0.8s ease both;
+}
+
+.hero .name {
+  animation-delay: 0.15s;
+}
+.hero .status {
+  animation-delay: 0.3s;
+}
+.hero .moto {
+  animation-delay: 0.45s;
+}
+
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* alternative to fixed height */
 
 @keyframes footer-flow {
@@ -2311,7 +2353,11 @@ main {
   .skills {
     padding: 0px 20px;
   }
-
+  .impact {
+    line-height: 1.5;
+    max-width: 60ch;
+    min-height: 70px;
+  }
   .socials svg {
     height: 20px;
     width: 20px;
@@ -2333,7 +2379,7 @@ main {
   }
 
   .nav > * {
-    font-size: 1.05rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -2392,10 +2438,10 @@ main {
   .secTitle {
     display: flex;
     justify-content: center;
-    padding: 15px 0px 30px 0px;
+    padding: 15px 0px 15px 0px;
   }
   .projectInfo {
-    gap: 1.25rem;
+    gap: 1.5rem;
   }
   .impact {
     line-height: 1.5;
@@ -2436,6 +2482,13 @@ main {
 
   .job .pic {
     height: 300px;
+  }
+
+  .jobs {
+    padding: 0px 20px;
+  }
+  .creations {
+    padding: 0px 20px;
   }
 }
 
