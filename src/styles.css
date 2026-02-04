@@ -134,7 +134,7 @@ footer {
 .panel {
   display: flex;
   justify-content: center;
-  min-height: auto;
+  min-height: 100vh;
   scroll-margin-top: 80px;
 }
 
@@ -232,10 +232,6 @@ footer {
   flex: 1;
 }
 
-.stechbox {
-  min-height: 100px;
-}
-
 .preview {
   display: flex;
   gap: 1rem;
@@ -258,7 +254,6 @@ footer {
 }
 
 .pic {
-  background-image: url('assets/isue.png');
   background-position: center;
   background-repeat: no-repeat;
   min-height: 300px;
@@ -1222,61 +1217,96 @@ section {
 }
 
 /* ============================
-   PROJECT CARD TEXT CONTRAST
+   PROJECT + JOB CARD TEXT CONTRAST
    ============================ */
 
 /* 1) Headings + key labels (brightest) */
 .projectInfo h2,
 .projectInfo .projectName,
 .projectInfo .title,
-.projectInfo .lo,              /* "Technologies" label in your card */
-.projectInfo .lo * {
+.projectInfo .lo,
+.projectInfo .lo *,
+.jobInfo h2,
+.jobInfo .role,
+.jobInfo .title,
+.jobInfo .lo,
+.jobInfo .lo *,
+.job-overlay .role,
+.job-overlay .app,
+.job-overlay .place,
+.job-overlay .lo,
+.job-overlay .lo * {
   color: rgba(255, 255, 255, 0.98);
   font-weight: 700;
   letter-spacing: 0.2px;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35); /* subtle pop */
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
 }
 
-/* 2) Description paragraph (still bright, but not as loud as headings) */
+/* 2) Description paragraph */
 .projectInfo .impact,
-.projectInfo p {
+.projectInfo p,
+.jobInfo .impact,
+.jobInfo p {
   color: rgba(255, 255, 255, 0.92);
   line-height: 1.55;
   font-weight: 450;
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.28);
 }
 
-/* 3) Metadata (date / location) — readable but clearly secondary */
+/* 3) Metadata (date / location) */
 .projectInfo .date,
 .projectInfo .location,
 .projectInfo .meta,
-.projectInfo .calendar {
+.projectInfo .calendar,
+.jobInfo .date,
+.jobInfo .location,
+.jobInfo .meta,
+.jobInfo .calendar,
+.jobInfo .place,
+.jobInfo .app,
+.job-overlay .date,
+.job-overlay .place,
+.job-overlay .app {
   color: rgba(255, 255, 255, 0.72);
   font-weight: 600;
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
 }
 
-/* 4) If your date/location are inside <i>/<svg> icon rows, align them */
+/* 4) Icons inside meta rows */
 .projectInfo .date svg,
 .projectInfo .location svg,
-.projectInfo .meta svg {
+.projectInfo .meta svg,
+.jobInfo .date svg,
+.jobInfo .location svg,
+.jobInfo .meta svg,
+.jobInfo .place svg,
+.job-overlay svg {
   opacity: 0.85;
 }
 
-/* 5) Make sure links in the card don't look washed out */
-.projectInfo a {
+/* 5) Links inside the card */
+.projectInfo a,
+.jobInfo a,
+.job-overlay a {
   color: rgba(255, 255, 255, 0.92);
   text-decoration-color: rgba(255, 255, 255, 0.35);
 }
 
-.projectInfo a:hover {
+.projectInfo a:hover,
+.jobInfo a:hover,
+.job-overlay a:hover {
   color: #fff;
   text-decoration-color: rgba(255, 255, 255, 0.65);
 }
 
+/* ============================
+   CARD HOVER (PROJECT + JOB)
+   ============================ */
+
 .project,
 .creation,
-.projectCard {
+.projectCard,
+.job {
   transition:
     transform 300ms ease,
     box-shadow 300ms ease;
@@ -1284,38 +1314,42 @@ section {
 
 .project:hover,
 .creation:hover,
-.projectCard:hover {
+.projectCard:hover,
+.job:hover {
   transform: translateY(-6px);
   box-shadow: 0 24px 50px rgba(0, 0, 0, 0.25);
 }
 
 /* ============================
-   3D HOVER ZOOM FOR PROJECT IMAGES
+   3D HOVER ZOOM FOR IMAGES (PROJECT + JOB)
    ============================ */
 
-/* The project card should provide perspective */
 .project,
 .creation,
-.projectCard {
-  perspective: 1000px; /* depth for 3D effect */
+.projectCard,
+.job {
+  perspective: 1000px;
 }
 
-/* Image wrapper: keep overflow hidden so zoom doesn't spill */
+/* Image wrapper: your projects use .prPics, job uses .pic */
 .project .image,
 .creation .image,
 .projectCard .image,
 .projectImg,
 .projectImage,
-.project-img {
+.project-img,
+.prPics,
+.job .pic {
   overflow: hidden;
-  border-radius: 12px; /* match your card rounding */
+  border-radius: 12px;
   transform-style: preserve-3d;
 }
 
-/* The actual image */
+/* Actual images: projects use <img>, job is background-image so we handle both */
 .project img,
 .creation img,
-.projectCard img {
+.projectCard img,
+.prPics img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1326,12 +1360,68 @@ section {
   will-change: transform;
 }
 
-/* Hover: image comes "closer" */
+/* Hover zoom: <img> zoom */
 .project:hover img,
 .creation:hover img,
-.projectCard:hover img {
+.projectCard:hover img,
+.creation:hover .prPics img {
   transform: translateZ(40px) scale(1.08);
   filter: saturate(1.05) contrast(1.05);
+}
+
+/* Hover zoom: background-image zoom (job banner) */
+.job .pic {
+  transition:
+    transform 450ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 300ms ease;
+  will-change: transform;
+}
+
+.job:hover .pic {
+  transform: scale(1.06);
+  filter: saturate(1.05) contrast(1.05);
+}
+
+/* 1) Job card should CLIP its contents so corners stay rounded */
+.job {
+  border-radius: 18px;
+  overflow: hidden; /* <-- important */
+  position: relative;
+  isolation: isolate;
+}
+
+/* 2) Remove the glow pseudo for .job (keep it for .creation if you want) */
+.job::before {
+  content: none; /* <-- disables your old glow layer that required overflow: visible */
+}
+
+/* 3) Keep your normal lift shadow */
+.job {
+  box-shadow: 0 15px 35px rgba(56, 73, 89, 0.12);
+  transition:
+    transform 250ms ease,
+    box-shadow 250ms ease,
+    filter 250ms ease;
+}
+
+/* 4) Glow that DOESN’T get clipped (drop-shadow happens outside the element) */
+.job:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.18);
+  filter: drop-shadow(0 0 18px rgba(79, 195, 247, 0.55))
+    drop-shadow(0 0 50px rgba(79, 195, 247, 0.25));
+}
+
+/* 5) Banner stays rounded + clips zoom */
+.job .pic {
+  border-radius: 18px 18px 0 0;
+  overflow: hidden; /* <-- important */
+  will-change: transform;
+}
+
+/* 6) Banner zoom stays inside now */
+.job:hover .pic {
+  transform: scale(1.06);
 }
 
 /* Animated flowing footer divider */
@@ -1404,10 +1494,11 @@ main {
    PROJECT CARD GLOW (FINAL)
    ========================= */
 
-.creation {
+.creation,
+.job {
   position: relative;
   border-radius: 16px;
-  overflow: hidden; /* keeps rounded corners clean */
+  overflow: visible; /* allow glow to show */
   isolation: isolate; /* keeps pseudo element behind correctly */
 
   /* NORMAL (no glow) */
@@ -1422,7 +1513,8 @@ main {
 }
 
 /* Background glow layer (OFF by default) */
-.creation::before {
+.creation::before,
+.job::before {
   content: '';
   position: absolute;
 
@@ -1447,7 +1539,8 @@ main {
   );
 }
 
-.creation:hover {
+.creation:hover,
+.job:hover {
   transform: translateY(-6px);
   border-color: rgba(79, 195, 247, 0.95); /* brighter border */
 
@@ -1459,6 +1552,10 @@ main {
 }
 
 .creation:hover::before {
+  opacity: 1;
+}
+
+.job:hover::before {
   opacity: 1;
 }
 
@@ -1477,7 +1574,7 @@ main {
 .job {
   width: min(560px, 100%);
   border-radius: 18px;
-  overflow: hidden; /* we WANT clipping for clean rounded corners */
+  overflow: visible;
   background: rgba(255, 255, 255, 0.92);
   box-shadow: 0 15px 35px rgba(56, 73, 89, 0.12);
   transition:
@@ -1493,10 +1590,12 @@ main {
 
 /* Top image area like project cards */
 .job .pic {
-  min-height: 350px; /* taller hero area */
+  min-height: 300px; /* taller hero area */
   background-size: cover; /* make it feel like a "banner" */
   background-position: center;
   position: relative;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
 }
 
 /* Overlay text inside the banner */
@@ -1534,6 +1633,10 @@ main {
   gap: 18px;
 }
 
+.creation {
+  overflow: hidden;
+}
+
 /* Long description: make it readable */
 .jobInfo .impact {
   line-height: 2;
@@ -1561,6 +1664,83 @@ main {
 /* If your tech list needs breathing room */
 .jobInfo .tech {
   gap: 10px;
+}
+
+/* === FINAL OVERRIDES: fix job rounding + stop image overflow === */
+.job {
+  border-radius: 18px !important;
+  overflow: hidden !important; /* clips the scaled banner */
+}
+
+/* kill the glow pseudo on job so it doesn't require overflow: visible */
+.job::before {
+  content: none !important;
+}
+
+/* make sure the banner respects the rounded top */
+.job .pic {
+  border-radius: 18px 18px 0 0 !important;
+  overflow: hidden !important;
+  transform-origin: center;
+}
+
+/* =========================
+   EXPERIENCE CARD IMAGE (match project cards)
+   ========================= */
+
+/* Make sure the job card clips children for rounded corners */
+.job {
+  border-radius: 18px;
+  overflow: hidden; /* keeps image zoom inside */
+}
+
+/* The image container (same role as .prPics) */
+.job .pic {
+  position: relative;
+  overflow: hidden; /* clip zoom */
+  border-radius: 18px 18px 0 0; /* rounded top */
+}
+
+/* The actual image behaves like project screenshots */
+.job .pic img {
+  width: 100%;
+  height: 100%;
+  min-height: 275px; /* taller banner than projects */
+  object-fit: cover;
+  display: block;
+
+  transform: scale(1);
+  transition:
+    transform 450ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 300ms ease;
+  will-change: transform;
+}
+
+/* Hover: ONLY the image zooms */
+.job:hover .pic img {
+  transform: scale(1.06);
+  filter: saturate(1.05) contrast(1.05);
+}
+
+/* Overlay stays readable and does NOT scale */
+.job .job-overlay {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  z-index: 2;
+
+  background: rgba(56, 73, 89, 0.65);
+  backdrop-filter: blur(10px);
+  border-radius: 14px;
+  padding: 10px 12px;
+}
+
+/* Overlay text styling */
+.job .job-overlay .role,
+.job .job-overlay .place,
+.job .job-overlay svg {
+  color: #ffffff;
+  stroke: #ffffff;
 }
 
 @keyframes footer-flow {
