@@ -43,6 +43,7 @@ main {
 footer {
   text-align: center;
   padding-bottom: 25px;
+  border-top: 1px solid var(--border);
 }
 
 .link,
@@ -80,9 +81,12 @@ footer {
   font-size: clamp(1.1rem, 2vw, 1.5rem);
 }
 
-.app,
 .role {
   font-size: clamp(1.15rem, 2.05vw, 1.55rem);
+}
+
+.app {
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
 }
 
 .nav {
@@ -130,8 +134,7 @@ footer {
 .panel {
   display: flex;
   justify-content: center;
-  min-height: 100vh;
-  border: 1px solid black;
+  min-height: auto;
   scroll-margin-top: 80px;
 }
 
@@ -182,7 +185,6 @@ footer {
 
 .myWork {
   font-weight: 500;
-  border: 2px solid black;
   border-radius: 12px;
   width: fit-content;
   padding: 10px 15px;
@@ -198,11 +200,9 @@ footer {
   display: flex;
   justify-content: center;
   padding: 10px 0 24px;
-  border: 1px solid black;
 }
 
 .jobs {
-  border: 2px solid black;
   display: flex;
   justify-content: center;
   min-height: auto;
@@ -213,7 +213,6 @@ footer {
 .job {
   border-radius: 12px;
   width: 500px;
-  border: 1px solid black;
   border-radius: 12px;
   height: fit-content;
 }
@@ -259,7 +258,6 @@ footer {
 }
 
 .pic {
-  border: 1px solid black;
   background-image: url('assets/isue.png');
   background-position: center;
   background-repeat: no-repeat;
@@ -290,7 +288,6 @@ footer {
 }
 
 .tools {
-  border: 2px solid black;
   border-radius: 12px;
   padding: 5px 15px;
 }
@@ -325,14 +322,13 @@ footer {
 .creation {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   border-radius: 16px;
-  border: 1px solid black;
   max-width: 420px;
   margin: 0 auto;
 }
 
 .prPics {
+  overflow: hidden;
   position: relative;
   height: 200px;
 }
@@ -348,8 +344,7 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 100px;
-  border: 1px solid black;
-  min-height: 100vh;
+  min-height: auto;
 }
 
 .langs {
@@ -365,13 +360,26 @@ footer {
   justify-content: center;
   flex-wrap: wrap;
   gap: 50px;
-  border: 1px solid black;
 }
 
 .skills {
   display: flex;
   flex-direction: column;
   padding: 32px 0;
+}
+
+#skills .langs {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+#skills .skillPics {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
 }
 
 .exp,
@@ -1008,7 +1016,7 @@ header {
   left: 0;
   right: 0;
   width: 100%;
-  height: 50vh;
+  height: 40vh;
   background: #384959;
   display: flex;
   flex-direction: column;
@@ -1104,7 +1112,345 @@ header {
   stroke: #88bdf2;
 }
 
-/* Consolidated responsive rules */
+/* 1) One continuous background */
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: linear-gradient(135deg, #bdddfc 0%, #88bdf2 100%);
+  background-attachment: fixed; /* keeps the gradient continuous while scrolling */
+}
+
+.panel,
+.hero,
+.exp,
+.projects,
+.skills,
+#home,
+#experience,
+#projects,
+#skills {
+  background: transparent !important;
+}
+
+main,
+section {
+  background: transparent;
+}
+
+.tech .tools,
+.techs .tools,
+.tools {
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-weight: 500;
+}
+
+.tech .tools:hover,
+.techs .tools:hover,
+.tools:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* === Project card typography (pop + hierarchy) === */
+
+/* The paragraph/description in each project card */
+.projectInfo .impact,
+.jobInfo .impact,
+.impact {
+  color: rgba(255, 255, 255, 0.9); /* brighter */
+  line-height: 1.5;
+  font-weight: 450;
+}
+
+/* Secondary metadata like date/location */
+.projectInfo .date,
+.projectInfo .location,
+.jobInfo .date,
+.jobInfo .location,
+.date,
+.location {
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 500;
+}
+
+/* Titles pop harder */
+.projectInfo h2,
+.jobInfo h2,
+.projectName,
+.roleTitle {
+  color: #fff;
+  letter-spacing: 0.2px;
+}
+
+/* === Tech pills (outlined + glow) === */
+
+.tech,
+.techs {
+  gap: 10px; /* more breathing room */
+}
+
+.tech .tools,
+.techs .tools,
+.tools {
+  color: rgba(255, 255, 255, 0.92);
+  background: rgba(17, 24, 39, 0.35); /* darker pill */
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+
+  /* “pop” */
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+/* Optional: hover like that example */
+.tech .tools:hover,
+.techs .tools:hover,
+.tools:hover {
+  background: rgba(17, 24, 39, 0.55);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-1px);
+  transition: 150ms ease;
+}
+
+/* ============================
+   PROJECT CARD TEXT CONTRAST
+   ============================ */
+
+/* 1) Headings + key labels (brightest) */
+.projectInfo h2,
+.projectInfo .projectName,
+.projectInfo .title,
+.projectInfo .lo,              /* "Technologies" label in your card */
+.projectInfo .lo * {
+  color: rgba(255, 255, 255, 0.98);
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35); /* subtle pop */
+}
+
+/* 2) Description paragraph (still bright, but not as loud as headings) */
+.projectInfo .impact,
+.projectInfo p {
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.55;
+  font-weight: 450;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.28);
+}
+
+/* 3) Metadata (date / location) — readable but clearly secondary */
+.projectInfo .date,
+.projectInfo .location,
+.projectInfo .meta,
+.projectInfo .calendar {
+  color: rgba(255, 255, 255, 0.72);
+  font-weight: 600;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
+}
+
+/* 4) If your date/location are inside <i>/<svg> icon rows, align them */
+.projectInfo .date svg,
+.projectInfo .location svg,
+.projectInfo .meta svg {
+  opacity: 0.85;
+}
+
+/* 5) Make sure links in the card don't look washed out */
+.projectInfo a {
+  color: rgba(255, 255, 255, 0.92);
+  text-decoration-color: rgba(255, 255, 255, 0.35);
+}
+
+.projectInfo a:hover {
+  color: #fff;
+  text-decoration-color: rgba(255, 255, 255, 0.65);
+}
+
+.project,
+.creation,
+.projectCard {
+  transition:
+    transform 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.project:hover,
+.creation:hover,
+.projectCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.25);
+}
+
+/* ============================
+   3D HOVER ZOOM FOR PROJECT IMAGES
+   ============================ */
+
+/* The project card should provide perspective */
+.project,
+.creation,
+.projectCard {
+  perspective: 1000px; /* depth for 3D effect */
+}
+
+/* Image wrapper: keep overflow hidden so zoom doesn't spill */
+.project .image,
+.creation .image,
+.projectCard .image,
+.projectImg,
+.projectImage,
+.project-img {
+  overflow: hidden;
+  border-radius: 12px; /* match your card rounding */
+  transform-style: preserve-3d;
+}
+
+/* The actual image */
+.project img,
+.creation img,
+.projectCard img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateZ(0) scale(1);
+  transition:
+    transform 450ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 300ms ease;
+  will-change: transform;
+}
+
+/* Hover: image comes "closer" */
+.project:hover img,
+.creation:hover img,
+.projectCard:hover img {
+  transform: translateZ(40px) scale(1.08);
+  filter: saturate(1.05) contrast(1.05);
+}
+
+/* Animated flowing footer divider */
+footer {
+  position: relative;
+  margin-top: 6rem;
+  padding-top: 3rem;
+  overflow: hidden; /* hide glow overflow */
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(900px, 90%);
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent);
+  opacity: 0.85;
+  filter: blur(0.2px);
+}
+
+/* flowing highlight */
+footer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: calc(50% - 450px);
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent);
+  box-shadow:
+    0 0 12px rgba(255, 255, 255, 0.5),
+    0 0 24px rgba(136, 189, 242, 0.6);
+  animation: footer-flow 2.5s linear infinite;
+}
+
+footer {
+  padding: 2.5rem 0 4rem !important;
+  background: rgba(56, 73, 89, 0.22);
+  backdrop-filter: blur(10px);
+}
+
+footer p {
+  padding-top: 0 !important;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.panel {
+  padding: 140px 0 90px;
+}
+
+.creation:hover {
+  filter: drop-shadow(0 0 18px rgba(136, 189, 242, 0.65))
+    drop-shadow(0 0 42px rgba(136, 189, 242, 0.35));
+}
+
+.creation {
+  position: relative;
+  isolation: isolate;
+  border-radius: 16px;
+  box-shadow:
+    0 14px 36px rgba(56, 73, 89, 0.22),
+    0 0 40px rgba(136, 189, 242, 0.45),
+    0 0 90px rgba(136, 189, 242, 0.28);
+}
+
+.prPics {
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+}
+
+/* 3) Strong noticeable glow behind card on hover */
+.creation::before {
+  content: '';
+  position: absolute;
+  inset: -22px; /* bigger = more glow */
+  border-radius: 24px;
+  z-index: -1;
+  opacity: 0.55;
+  filter: blur(28px);
+  transition: opacity 220ms ease;
+
+  background: radial-gradient(
+    circle at 30% 15%,
+    rgba(136, 189, 242, 0.95),
+    rgba(106, 137, 167, 0.55) 35%,
+    transparent 70%
+  );
+}
+
+.creation:hover::before {
+  opacity: 1;
+}
+
+@keyframes footer-flow {
+  0% {
+    transform: translateX(-450px);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(450px);
+    opacity: 0;
+  }
+}
+
 @media (max-width: 1023px) {
   .hero {
     display: flex;
@@ -1121,7 +1467,6 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid black;
   }
   .bio {
     display: flex;
@@ -1184,7 +1529,6 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid black;
   }
   .bio {
     display: flex;
@@ -1210,7 +1554,6 @@ header {
     display: flex;
     justify-content: center;
     padding: 15px 0px 30px 0px;
-    border: 1px solid black;
   }
   .projectInfo {
     gap: 1.25rem;
