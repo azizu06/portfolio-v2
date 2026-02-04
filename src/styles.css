@@ -2023,7 +2023,8 @@ main {
 }
 
 /* Icons (GitHub, LinkedIn, Resume) */
-.site-header .socials .link svg {
+.site-header .socials .link svg,
+.preview svg {
   transition:
     transform 220ms ease,
     filter 220ms ease,
@@ -2037,7 +2038,8 @@ main {
 }
 
 /* Glow on icons */
-.site-header .socials .link:hover svg {
+.site-header .socials .link:hover svg,
+.preview:hover svg {
   filter: drop-shadow(0 0 10px rgba(120, 170, 255, 0.6));
   stroke: #ffffff;
 }
@@ -2063,6 +2065,73 @@ main {
 /* Optional: slight opacity change for inactive state */
 .site-header .socials .link:not(:hover) svg {
   opacity: 0.85;
+}
+
+.secTitle {
+  font-size: clamp(2.6rem, 4vw, 3.6rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  color: #ffffff; /* main fill */
+
+  /* blue pixel edge / outline */
+  text-shadow:
+    2px 0 0 #5fa8ff,
+    -2px 0 0 #5fa8ff,
+    0 2px 0 #5fa8ff,
+    0 -2px 0 #5fa8ff,
+    2px 2px 0 #5fa8ff,
+    -2px 2px 0 #5fa8ff,
+    2px -2px 0 #5fa8ff,
+    -2px -2px 0 #5fa8ff,
+    0 6px 12px rgba(0, 40, 120, 0.35); /* depth */
+
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.secTitle {
+  font-family: 'Press Start 2P', monospace; /* optional pixel font */
+}
+
+.name {
+  font-weight: 900;
+  color: #ffffff;
+
+  text-shadow:
+    1px 0 0 #8ab4ff,
+    -1px 0 0 #8ab4ff,
+    0 1px 0 #8ab4ff,
+    0 -1px 0 #8ab4ff,
+    0 4px 10px rgba(0, 40, 120, 0.3);
+}
+
+.secTitle {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+/* underline */
+.secTitle::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0%;
+  height: 4px;
+  border-radius: 999px;
+
+  background: linear-gradient(90deg, #7fb3ff, #3b82f6);
+
+  transform: translateX(-50%);
+  transition: width 500ms ease;
+}
+
+/* animate in */
+.reveal.is-visible .secTitle::after {
+  width: 70%;
 }
 
 /* alternative to fixed height */
