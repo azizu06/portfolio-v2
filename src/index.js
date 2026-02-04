@@ -38,7 +38,9 @@ if (!supportsIO) {
     (entries, obs) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-visible');
+        requestAnimationFrame(() => {
+          entry.target.classList.add('is-visible');
+        });
         obs.unobserve(entry.target);
       });
     },
@@ -47,12 +49,20 @@ if (!supportsIO) {
 
   reveals.forEach((el) => observer.observe(el));
 
-  // Extra safety: if Projects is still hidden on mobile, force-show it
-  setTimeout(() => {
-    document
-      .querySelectorAll('#projects .reveal:not(.is-visible)')
-      .forEach((el) => el.classList.add('is-visible'));
-  }, 1500);
+  const revealInView = () => {
+    reveals.forEach((el) => {
+      if (el.classList.contains('is-visible')) return;
+      const rect = el.getBoundingClientRect();
+      if (rect.top <= window.innerHeight * 0.9) {
+        el.classList.add('is-visible');
+      }
+    });
+  };
+
+  window.addEventListener('load', revealInView);
+  window.addEventListener('resize', revealInView);
+  window.addEventListener('scroll', revealInView, { passive: true });
+  revealInView();
 }
 
 const hamburger = document.querySelector('.hamburger');
