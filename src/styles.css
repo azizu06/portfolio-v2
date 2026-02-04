@@ -1001,7 +1001,7 @@ header {
   left: 0;
   right: 0;
   width: 100%;
-  height: 30vh;
+  height: 35vh;
   background: #384959;
   display: flex;
   flex-direction: column;
@@ -2126,6 +2126,130 @@ main {
 /* animate in */
 .reveal.is-visible .secTitle::after {
   width: 70%;
+}
+
+/* =========================
+   MOBILE PANEL: MATCH NAV ANIMATION
+   ========================= */
+
+/* 1) Mobile nav items (Home/Experience/Projects/Skills) */
+.mobile-nav .items {
+  position: relative;
+  display: inline-flex;
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 10px;
+
+  transition:
+    transform 220ms ease,
+    color 220ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.mobile-nav .items:hover {
+  transform: translateY(-2px) scale(1.03);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
+}
+
+/* underline animation like desktop */
+.mobile-nav .items::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  border-radius: 999px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, #7aa2ff, #9fd3ff);
+  transition: width 220ms ease;
+}
+
+.mobile-nav .items:hover::after {
+  width: 70%;
+}
+
+/* keyboard accessibility */
+.mobile-nav .items:focus-visible {
+  outline: 3px solid rgba(136, 189, 242, 0.8);
+  outline-offset: 4px;
+}
+
+/* 2) Mobile socials (GitHub/LinkedIn/Resume icons) */
+.mobile-socials .link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+
+  transition:
+    transform 220ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.mobile-socials .link svg {
+  transition:
+    transform 220ms ease,
+    filter 220ms ease,
+    stroke 220ms ease;
+}
+
+.mobile-socials .link:hover {
+  transform: translateY(-2px) scale(1.05);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28);
+}
+
+.mobile-socials .link:hover svg {
+  filter: drop-shadow(0 0 10px rgba(120, 170, 255, 0.6));
+  stroke: #ffffff;
+}
+
+.mobile-socials .link:focus-visible {
+  outline: 3px solid rgba(136, 189, 242, 0.8);
+  outline-offset: 4px;
+}
+
+/* 3) Close button (×) */
+.mobile-close {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    transform 220ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease,
+    color 220ms ease;
+}
+
+.mobile-close:hover {
+  transform: translateY(-2px) scale(1.06);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 12px 26px rgba(0, 0, 0, 0.28),
+    0 0 20px rgba(120, 170, 255, 0.25);
+  color: #ffffff;
+}
+
+.mobile-close:active {
+  transform: translateY(0) rotate(0deg) scale(1.02);
+}
+
+.mobile-close:focus-visible {
+  outline: 3px solid rgba(136, 189, 242, 0.8);
+  outline-offset: 4px;
 }
 
 /* alternative to fixed height */
