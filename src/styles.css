@@ -2296,6 +2296,10 @@ main {
   animation-delay: 0.45s;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 @keyframes hero-fade-up {
   from {
     opacity: 0;
