@@ -1,10 +1,4 @@
 import './styles.css';
-import resume from './assets/resume.pdf';
-
-const links = document.querySelectorAll('.resume');
-links.forEach((link) => {
-  if (link) link.href = resume;
-});
 
 document.body.classList.add('js-ready');
 

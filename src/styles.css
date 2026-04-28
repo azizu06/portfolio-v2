@@ -2037,7 +2037,7 @@ main {
     opacity 220ms ease;
 }
 
-/* Icons (GitHub, LinkedIn, Resume) */
+/* Icons (GitHub, LinkedIn) */
 .site-header .socials .link svg,
 .preview svg {
   transition:
@@ -2199,7 +2199,7 @@ main {
   outline-offset: 4px;
 }
 
-/* 2) Mobile socials (GitHub/LinkedIn/Resume icons) */
+/* 2) Mobile socials (GitHub/LinkedIn icons) */
 .mobile-socials .link {
   display: inline-flex;
   align-items: center;
